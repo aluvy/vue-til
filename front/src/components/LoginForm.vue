@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="loginSubmit">
       <div>
         <label for="username">id: </label>
         <input id="username" type="text" v-model="username">
@@ -9,46 +9,37 @@
         <label for="password">pw: </label>
         <input id="password" type="text" v-model="password">
       </div>
-      <div>
-        <label for="nickname">nickname: </label>
-        <input id="nickname" type="text" v-model="nickname">
-      </div>
-      <button type="submit">Sign up</button>
+      <button type="submit">Login</button>
     </form>
     <p>{{ logMessage }}</p>
   </div>
 </template>
 
 <script>
-import { registerUser } from '@/api/index.js';
+import { loginUser } from '@/api/index.js';
 
 export default {
   data() {
     return {
       username: '',
       password: '',
-      nickname: '',
       logMessage: '',
     }
   },
   methods: {
-    async submitForm() {
-      console.log('submit');
+    async loginSubmit() {
       const userData = {
         username: this.username,
-        password: this.password,
-        nickname: this.nickname,
-      };
-      const res = await registerUser(userData);
-      console.log(res.data.username);
-
-      this.logMessage = `${res.data.username}님 가입되었습니다.`;
+        password: this.password
+      }
+      const res = await loginUser(userData);
+      console.log(res);
+      this.logMessage = `${res.data.user.username}님 로그인 되었습니다.`;
       this.initForm();
     },
     initForm() {
       this.username = '';
       this.password = '';
-      this.nickname = '';
     }
   }
 }

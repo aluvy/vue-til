@@ -8,4 +8,8 @@ function registerUser(userData) {
 	return instance.post('/signup', userData); // promise return
 }
 
-export { registerUser };
+function loginUser(userData) {
+	return instance.post('/login', userData); // promise return
+}
+
+export { registerUser, loginUser };
