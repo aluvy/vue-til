@@ -28,7 +28,7 @@
 			"mode": "auto"
 		}
 	],
-	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "css"],
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue"],
 	"prettier.singleQuote": true,
 	"prettier.semi": true,
 	"prettier.trailingComma": "es5",

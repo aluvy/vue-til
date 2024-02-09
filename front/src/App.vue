@@ -1,9 +1,6 @@
 <template>
 	<div>
-		<header>
-			<router-link to="/login">login</router-link>
-			<router-link to="/signup">signup</router-link>
-		</header>
+		<AppHeader></AppHeader>
 		<transition name="pageChange">
 			<router-view></router-view>
 		</transition>
@@ -11,8 +8,12 @@
 </template>
 
 <script>
+import AppHeader from '@/components/common/AppHeader.vue';
 
 export default {
+	components: {
+		AppHeader,
+	}
 };
 </script>
 
