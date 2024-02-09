@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { registerUser } from '@/api/index.js';
+
 export default {
   data() {
     return {
@@ -30,6 +32,12 @@ export default {
   methods: {
     submitForm() {
       console.log('submit');
+      const userData = {
+        username: this.username,
+        password: this.password,
+        nickname: this.nickname,
+      };
+      registerUser(userData);
     }
   }
 }

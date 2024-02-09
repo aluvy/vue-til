@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="App">
 		<AppHeader></AppHeader>
 		<transition name="pageChange">
 			<router-view></router-view>
