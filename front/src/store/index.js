@@ -11,12 +11,16 @@ export default new Vuex.Store({
 		token: '',
 	},
 	getters: {
+		getPagetit: state => state.pageTit,
 		getUsername: state => state.username,
 		getNickname: state => state.nickname,
 		getToken: state => state.token,
 		isLogin: state => state.username !== '',
 	},
 	mutations: {
+		setPagetit(state, payload) {
+			state.pageTit = payload.pageTit;
+		},
 		setUserinfo(state, payload) {
 			state.username = payload.user.username;
 			state.nickname = payload.user.nickname;

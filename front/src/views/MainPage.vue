@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="pageTit"><h2>Today I Learned! ☺️</h2></div>
+  <div class="cont_wrap">
+    mainpage
   </div>
 </template>
 

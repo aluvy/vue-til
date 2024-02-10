@@ -1,5 +1,7 @@
 <template>
-  <div>Page is not found</div>
+  <div class="cont_wrap">
+    notpound
+  </div>
 </template>
 
 <script>

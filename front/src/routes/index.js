@@ -17,24 +17,25 @@ export default new VueRouter({
 			path: '/login',
 			name: 'LoginPage',
 			component: LoginPage,
-			meta: {
-				title: 'login',
-			},
+			meta: { title: 'Login' },
 		},
 		{
 			path: '/signup',
 			name: 'SignupPage',
 			component: () => import('@/views/SignupPage.vue'),
+			meta: { title: 'Sign Up' },
 		},
 		{
 			path: '/main',
 			name: 'MainPage',
 			component: () => import('@/views/MainPage.vue'),
+			meta: { title: 'Today I Learned! ☺️' },
 		},
 		{
 			path: '*',
 			name: 'NotFoundPage',
 			component: () => import('@/views/NotFoundPage.vue'),
+			meta: { title: 'Page is not found' },
 		},
 	],
 });
