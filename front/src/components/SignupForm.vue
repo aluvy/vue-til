@@ -1,19 +1,29 @@
 <template>
   <div>
-    <form @submit.prevent="submitForm">
-      <div>
-        <label for="username">id: </label>
-        <input id="username" type="text" v-model="username">
+    <form @submit.prevent="submitForm" class="submit_area">
+      <div class="form-area">
+        <div class="form-group">
+          <div class="form-item">
+            <label for="username">id</label>
+            <input id="username" type="text" class="input" v-model="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-item">
+            <label for="password">pw</label>
+            <input id="password" type="text" class="input" v-model="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-item">
+            <label for="nickname">nickname</label>
+            <input id="nickname" type="text" class="input" v-model="nickname">
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="password">pw: </label>
-        <input id="password" type="text" v-model="password">
+      <div class="btn-area">
+        <button type="submit" class="btn" :disabled="!isUsernameValid || !isPasswordValid || !isNicknameValid">Sign up</button>
       </div>
-      <div>
-        <label for="nickname">nickname: </label>
-        <input id="nickname" type="text" v-model="nickname">
-      </div>
-      <button type="submit">Sign up</button>
     </form>
     <p>{{ logMessage }}</p>
   </div>
@@ -21,6 +31,7 @@
 
 <script>
 import { registerUser } from '@/api/index.js';
+import { validateEmail, validatePassword, validateNickname } from '@/utils/validation.js';
 
 export default {
   data() {
@@ -30,6 +41,17 @@ export default {
       nickname: '',
       logMessage: '',
     }
+  },
+  computed: {
+    isUsernameValid() {
+      return validateEmail(this.username);
+    },
+    isPasswordValid() {
+      return validatePassword(this.password);
+    },
+    isNicknameValid() {
+      return validateNickname(this.nickname);
+    },
   },
   methods: {
     async submitForm() {
@@ -53,9 +75,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form input[type="text"],
-form input[type="password"] { width: 100%; background: #eee; }
-form button { width: 100%; background: tomato; color: #fff; }
-</style>

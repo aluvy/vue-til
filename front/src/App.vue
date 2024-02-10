@@ -1,9 +1,11 @@
 <template>
-	<div id="App">
+	<div id="App" class="wrap">
 		<AppHeader></AppHeader>
-		<transition name="pageChange">
-			<router-view></router-view>
-		</transition>
+		<div class="container">
+			<transition name="pageChange">
+				<router-view></router-view>
+			</transition>
+		</div>
 	</div>
 </template>
 
@@ -13,6 +15,13 @@ import AppHeader from '@/components/common/AppHeader.vue';
 export default {
 	components: {
 		AppHeader,
+	},
+	created() {
+		const setVh = () => {
+			document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+		};
+		window.addEventListener('resize', setVh);
+		setVh();
 	}
 };
 </script>

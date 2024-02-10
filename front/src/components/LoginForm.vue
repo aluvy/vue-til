@@ -1,15 +1,23 @@
 <template>
   <div>
-    <form @submit.prevent="loginSubmit">
-      <div>
-        <label for="username">id: </label>
-        <input id="username" type="text" v-model="username">
+    <form @submit.prevent="loginSubmit" class="login_area">
+      <div class="form-area">
+        <div class="form-group">
+          <div class="form-item">
+            <label for="username">id</label>
+            <input id="username" type="text" class="input" v-model="username">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-item">
+            <label for="password">password</label>
+            <input id="password" type="text" class="input" v-model="password">  
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="password">pw: </label>
-        <input id="password" type="text" v-model="password">
+      <div class="btn-area">
+        <button type="submit" class="btn" :disabled="!isUsernameValid || !isPasswordValid">Login</button>
       </div>
-      <button type="submit">Login</button>
     </form>
     <p>{{ logMessage }}</p>
   </div>
@@ -17,6 +25,8 @@
 
 <script>
 import { loginUser } from '@/api/index.js';
+import { validateEmail, validatePassword } from '@/utils/validation.js'
+
 
 export default {
   data() {
@@ -26,16 +36,31 @@ export default {
       logMessage: '',
     }
   },
+  computed: {
+    isUsernameValid() {
+      return validateEmail(this.username);
+    },
+    isPasswordValid() {
+      return validatePassword(this.password);
+    }
+  },
   methods: {
     async loginSubmit() {
-      const userData = {
-        username: this.username,
-        password: this.password
+      try {
+        const userData = {
+          username: this.username,
+          password: this.password
+        }
+        const res = await loginUser(userData);
+        console.log(res);
+        this.logMessage = `${res.data.user.username}님 로그인 되었습니다.`;
+      } catch (e) {
+        console.log(e);
+        this.logMessage = e.response.data;
+      } finally {
+        this.initForm();
       }
-      const res = await loginUser(userData);
-      console.log(res);
-      this.logMessage = `${res.data.user.username}님 로그인 되었습니다.`;
-      this.initForm();
+
     },
     initForm() {
       this.username = '';
@@ -44,9 +69,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form input[type="text"],
-form input[type="password"] { width: 100%; background: #eee; }
-form button { width: 100%; background: tomato; color: #fff; }
-</style>
