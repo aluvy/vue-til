@@ -1,11 +1,18 @@
 <template>
-  <div class="cont_wrap">
-    mainpage
+  <div>
+    <PageTit></PageTit>
+    <div class="cont_wrap">
+      mainpage
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import PageTit from '@/components/common/PageTit.vue'
 
+export default {
+  components: {
+    PageTit,
+  }
 }
 </script>

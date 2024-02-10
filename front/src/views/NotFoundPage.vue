@@ -1,12 +1,19 @@
 <template>
-  <div class="cont_wrap">
-    notpound
+  <div>
+    <PageTit></PageTit>
+    <div class="cont_wrap">
+      notpound
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import PageTit from '@/components/common/PageTit.vue'
 
+export default {
+  components: {
+    PageTit,
+  }
 }
 </script>
 

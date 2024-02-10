@@ -2,38 +2,29 @@
 	<div id="App" class="wrap">
 		<AppHeader></AppHeader>
 		<div class="container">
-			<transition name="pageChange">
-				<PageTit></PageTit>
-			</transition>
-			<transition name="pageChange">
+			<transition name="pageChange" mode="out-in" appear>
 				<router-view></router-view>
 			</transition>
 		</div>
+		<AppFooter></AppFooter>
 	</div>
 </template>
 
 <script>
 import AppHeader from '@/components/common/AppHeader.vue';
-import PageTit from '@/components/common/PageTit.vue'
+import AppFooter from '@/components/common/AppFooter.vue';
 
 export default {
 	components: {
 		AppHeader,
-		PageTit,
+		AppFooter
 	},
 	methods: {
 		setVh() {
 			document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
 		},
-		setPagetit() {
-			this.$store.commit('setPagetit', { pageTit: this.$route.meta.title });
-		}
-	},
-	updated() {
-		this.setPagetit();
 	},
 	created() {
-		this.setPagetit();
 		window.addEventListener('resize', this.setVh);
 		this.setVh();
 	},
@@ -42,15 +33,3 @@ export default {
 	},
 };
 </script>
-
-<style scoped>
-.pageChange-enter-active,
-.pageChange-leave-active { width: 100%; animation: pageChange .2s; }
-.pageChange-enter-active { animation-delay: .1s; animation-fill-mode: backwards; }
-.pageChange-leave-active { position: absolute; animation-direction: reverse; }
-
-@keyframes pageChange {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
-}
-</style>

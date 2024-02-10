@@ -1,3 +1,14 @@
+/* pageChange */
+.pageChange-enter-active,
+.pageChange-leave-active { /*width: 100%;*/ animation: pageChange .2s; }
+.pageChange-enter-active { /*animation-delay: .1s;*/ animation-fill-mode: backwards; }
+.pageChange-leave-active { /*position: absolute;*/ animation-direction: reverse; }
+
+@keyframes pageChange {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
 /* layout */
 .wrap { position:relative; }
 header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; border-bottom: 1px solid #eee; }
@@ -9,6 +20,9 @@ header nav a { padding: .6rem 1rem; }
 header nav .username { font-size: 1.2rem; }
 header nav .username strong { color: var(--color-point); }
 header nav .username + ul { margin-left: 1rem; }
+
+footer { text-align: center; font-size: 1.2rem; color: #888; }
+
 
 .container { position:relative; max-width: 45rem; margin: 0 auto; padding-top: 6rem; overflow:hidden; }
 
