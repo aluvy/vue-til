@@ -92,7 +92,7 @@ a:hover { color: var(--color-point); }
 
 strong,h1,h2,h3 { font-weight: 700; }
 button { background-color: transparent; color: inherit; cursor: pointer; }
-button:hover { color: inherit; }
+/* button:hover { color: inherit; } */
 label{ cursor: pointer; }
 input, select, textarea, button { border: 0; border-radius: 0; -webkit-appearance: none; appearance: none; }
 
