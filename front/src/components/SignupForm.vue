@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
           <div class="form-item">
-            <label for="password">pw</label>
+            <label for="password">password</label>
             <input id="password" type="text" class="input" v-model="password">
           </div>
         </div>
