@@ -1,14 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { saveAuthToCookie, saveUserToCookie, getAuthFromCookie, getUserFromCookie, deleteCookie } from '@/utils/cookies.js';
+import { loginUser } from '@/api/index.js';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
 		pageTit: '',
-		username: '',
+		username: getUserFromCookie() || '',
 		nickname: '',
-		token: '',
+		token: getAuthFromCookie() || '',
 	},
 	getters: {
 		getPagetit: state => state.pageTit,
@@ -34,5 +36,19 @@ export default new Vuex.Store({
 			state.token = '';
 		},
 	},
-	actions: {},
+	actions: {
+		async LOGIN(context, payload) {
+			const res = await loginUser(payload.userData);
+
+			context.commit('setUserinfo', { user: res.data.user });
+			context.commit('setToken', { token: res.data.token });
+			saveAuthToCookie(res.data.token);
+			saveUserToCookie(res.data.user.username);
+
+			return res;
+		},
+		LOGOUT() {
+			deleteCookie();
+		},
+	},
 });

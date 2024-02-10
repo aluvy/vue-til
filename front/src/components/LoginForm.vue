@@ -24,9 +24,7 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/index.js';
 import { validateEmail, validatePassword } from '@/utils/validation.js'
-
 
 export default {
   data() {
@@ -51,10 +49,13 @@ export default {
           username: this.username,
           password: this.password
         }
-        const res = await loginUser(userData);
-        console.log(res);
-        this.$store.commit('setUserinfo', { user: res.data.user });
-        this.$store.commit('setToken', { token: res.data.token });
+        await this.$store.dispatch('LOGIN', { userData: userData });
+        // const res = await loginUser(userData);
+        
+        // this.$store.commit('setUserinfo', { user: res.data.user });
+        // this.$store.commit('setToken', { token: res.data.token });
+        // saveAuthToCookie(res.data.token);
+        // saveUserToCookie(res.data.user.username);
 
         // 메인페이지로 이동
         this.$router.push('/main');
