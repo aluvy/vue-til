@@ -8,20 +8,26 @@ export default new Vuex.Store({
 		pageTit: '',
 		username: '',
 		nickname: '',
+		token: '',
 	},
 	getters: {
 		getUsername: state => state.username,
 		getNickname: state => state.nickname,
+		getToken: state => state.token,
 		isLogin: state => state.username !== '',
 	},
 	mutations: {
 		setUserinfo(state, payload) {
-			state.username = payload.username;
-			state.nickname = payload.nickname;
+			state.username = payload.user.username;
+			state.nickname = payload.user.nickname;
+		},
+		setToken(state, payload) {
+			state.token = payload.token;
 		},
 		clearUserinfo(state) {
 			state.username = '';
 			state.nickname = '';
+			state.token = '';
 		},
 	},
 	actions: {},

@@ -5,7 +5,7 @@
 
       <nav>
         <template v-if="isLogin">
-          <div class="username">{{ $store.getters.getUsername }}</div>
+          <div class="username"><strong>{{ $store.getters.getUsername }}</strong> is logged</div>
           <ul>
             <li><a href="javascript:;" @click="logoutUsesr">logout</a></li>
           </ul>

@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 export default new VueRouter({
 	// mode: 'history',
 	// base: '/#',
+	scrollBehavior: () => ({ y: 0 }),
 	routes: [
 		{
 			path: '/',
@@ -16,6 +17,9 @@ export default new VueRouter({
 			path: '/login',
 			name: 'LoginPage',
 			component: LoginPage,
+			meta: {
+				title: 'login',
+			},
 		},
 		{
 			path: '/signup',

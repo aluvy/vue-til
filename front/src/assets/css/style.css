@@ -6,8 +6,9 @@ header nav { display:flex; align-items: center; }
 header nav ul { display: flex; align-items: center; font-size: 1.2rem; margin-right: -1rem; }
 header nav a { padding: .6rem 1rem; }
 
-header nav .username { font-size: 1.2rem; color: var(--color-point); }
-header nav .username ul { margin-left: 1rem; }
+header nav .username { font-size: 1.2rem; }
+header nav .username strong { color: var(--color-point); }
+header nav .username + ul { margin-left: 1rem; }
 
 .container { position:relative; max-width: 45rem; margin: 0 auto; padding-top: 6rem; overflow:hidden; }
 

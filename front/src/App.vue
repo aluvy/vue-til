@@ -17,6 +17,7 @@ export default {
 		AppHeader,
 	},
 	created() {
+		console.log(this.$router);
 		const setVh = () => {
 			document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
 		};
