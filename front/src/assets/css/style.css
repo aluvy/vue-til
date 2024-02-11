@@ -24,11 +24,24 @@ footer { text-align: center; font-size: 1.2rem; color: #888; }
 .form-group + .form-group { margin-top: 2rem; }
 .form-item > label { display: block; font-size: 1.4rem; color: #444; margin-bottom: 0.6rem; }
 .input { width: 100%; height: 5.2rem; font-size: 1.6rem; padding: 1.2rem 1.6rem; border-radius: 0.8rem; border:1px solid #dfdfdf; box-shadow: 0 2px 3px rgba(0,0,0,0.07); background: #fff; transition: all .3s; }
-.input:focus { outline: none; border-color: #444; }
+.textarea { width: 100%; height: 10rem; font-size: 1.6rem; padding: 1.2rem 1.6rem; border-radius: 0.8rem; border:1px solid #dfdfdf; box-shadow: 0 2px 3px rgba(0,0,0,0.07); background: #fff; resize: none; transition: all .3s; }
+
+.input:focus,
+.textarea:focus { outline: none; border-color: #444; }
+
+.form-valid { font-size: 1.3rem; margin-top: 1rem; text-indent: -1.2rem; padding-left: 1.2rem; }
+.form-valid::before { content: '- '; }
+.form-valid + .form-valid { margin-top: 0; }
+.form-valid.danger { color: var(--color-danger); }
+
 
 .form-area + .btn-area { margin-top: 3rem; }
 .btn { width: 100%; height: 5.8rem; font-size: 1.6rem; background: var(--button-bg); color: var(--button-color); border-radius: 0.8rem; transition: all .3s; }
 .btn[disabled] { background: var(--button-disabled); color: var(--button-disabled-color); }
+
+.btn-create { position: fixed; right: 2.6rem; bottom: 2.6rem; display: flex; align-items: center; justify-content: center; width: 5rem; height: 5rem; border-radius: 4rem; background: var(--color-point); color: #fff; font-size: 2.6rem; box-shadow: 2px 5px 10px rgba(0,0,0, 0.3); }
+.btn-create:hover { color: #fff; }
+.btn-create { --ionicon-stroke-width: 5.4rem; }
 
 
 /* post */
@@ -39,7 +52,8 @@ footer { text-align: center; font-size: 1.2rem; color: #888; }
 .post-leave-to { opacity: 0; transform: scaleY(0.01) translate(30px, 0); }
 .post-leave-active { position: absolute; }
 
-.post-item + .post-item { border-top: 1px solid #ddd; }
+.post-item + .post-item { margin-top: 2rem; }
+.post-item { padding: 1.6rem 1.8rem; border-radius: 0.8rem; border: 1px solid #ddd; }
 .post-title { font-weight: 700; }
 .post-cont { margin: 1rem 0 0; }
 .post-time { font-size: 1.2rem; color: #888; }

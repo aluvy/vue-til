@@ -32,6 +32,12 @@ export default new VueRouter({
 			meta: { title: 'Today I Learned! ☺️' },
 		},
 		{
+			path: '/add',
+			name: 'AddPostPage',
+			component: () => import('@/views/AddPostPage.vue'),
+			meta: { title: 'Add Post' },
+		},
+		{
 			path: '*',
 			name: 'NotFoundPage',
 			component: () => import('@/views/NotFoundPage.vue'),

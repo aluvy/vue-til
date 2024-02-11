@@ -10,7 +10,12 @@
           <PostItems v-for="post in posts" :key="post._id" :post="post"></PostItems>
         </transition-group>
       </template>
+
+      <router-link to="/add" class="btn-create" title="add">
+        <ion-icon name="add-outline"></ion-icon>
+      </router-link>
     </div>
+
   </div>
 </template>
 
