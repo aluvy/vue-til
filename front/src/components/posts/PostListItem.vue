@@ -3,13 +3,43 @@
     <div class="post-title">{{ post.title }}</div>
     <div class="post-cont">{{ post.contents }}</div>
     <div class="post-time">{{ post.createdAt }}</div>
+    <div>
+      <button type="button" @click="editPost(post._id)" title="edit"><ion-icon name="pencil"></ion-icon></button>
+      <button type="button" @click="deletePost(post._id)" title="delete"><ion-icon name="trash"></ion-icon></button>
+    </div>
   </li>
 </template>
 
 <script>
+import { deletePost } from '@/api/posts.js'
+
 export default {
   props: {
     post: Object
+  },
+  methods: {
+    async deletePost(_id) {
+      // console.log(_id);
+      const isDelete = confirm('you want to delete it?');
+      if( !isDelete ) return false;
+      try {
+        await deletePost(_id);
+        // console.log(res);
+        this.$emit('refresh');
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async editPost(_id) {
+      this.$router.push(`/post/${_id}`);
+      // console.log(_id);
+      // try {
+      //   const res = await editPost(_id);
+      //   console.log(res);
+      // } catch (e) {
+      //   console.log(e);
+      // }
+    },
   }
 }
 </script>

@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 export default new VueRouter({
 	// mode: 'history',
 	// base: '/#',
-	scrollBehavior: () => ({ y: 0 }),
+	// scrollBehavior: () => ({ y: 0 }),
 	routes: [
 		{
 			path: '/',
@@ -36,6 +36,12 @@ export default new VueRouter({
 			name: 'AddPostPage',
 			component: () => import('@/views/AddPostPage.vue'),
 			meta: { title: 'Add Post' },
+		},
+		{
+			path: '/post/:id',
+			name: 'EditPostPage',
+			component: () => import('@/views/EditPostPage.vue'),
+			meta: { title: 'Edit Post' },
 		},
 		{
 			path: '*',

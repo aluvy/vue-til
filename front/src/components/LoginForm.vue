@@ -6,6 +6,7 @@
           <div class="form-item">
             <label for="username">id</label>
             <input id="username" type="text" class="input" v-model="username">
+            <ion-icon name="close-circle-sharp"></ion-icon>
           </div>
         </div>
         <div class="form-group">

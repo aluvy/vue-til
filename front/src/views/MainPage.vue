@@ -1,13 +1,13 @@
 <template>
   <div>
     <PageTit></PageTit>
-    <div class="cont_wrap">
+    <div class="content">
       <template v-if="isLoading">
         <AppLoading></AppLoading>
       </template>
       <template v-else>
         <transition-group tag="ul" name="post">
-          <PostItems v-for="post in posts" :key="post._id" :post="post"></PostItems>
+          <PostItems v-for="post in posts" :key="post._id" :post="post" @refresh="refresh"></PostItems>
         </transition-group>
       </template>
 
@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     async fetchPosts() {
+      console.log('fetchPosts');
       try {
         this.isLoading = true;
         const res = await fetchPosts();
@@ -48,6 +49,10 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    refresh() {
+      console.log('refresh');
+      this.fetchPosts();
     }
   },
   created() {

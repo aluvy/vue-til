@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageTit></PageTit>
-    <div class="cont_wrap">
+    <div class="content">
       <AddPostForm></AddPostForm>
     </div>
   </div>

@@ -16,10 +16,10 @@ export const user = createInstance();
  * GET - posts {id}
  * DELETE - posts {id}
  */
-function createInstanceAuth() {
+function createInstanceAuth(url) {
 	const instance = axios.create({
-		baseURL: `${process.env.VUE_APP_API_URL}`,
+		baseURL: `${process.env.VUE_APP_API_URL}${url}`,
 	});
 	return setInterceptors(instance);
 }
-export const post = createInstanceAuth();
+export const post = createInstanceAuth('/posts');
