@@ -17,7 +17,10 @@
         </div>
       </div>
       <div class="btn-area">
-        <button type="submit" class="btn" :disabled="!isTitleValid || !isContentsValid">Add Post!</button>
+        <div class="btn-group">
+          <button type="submit" class="btn" :disabled="!isTitleValid || !isContentsValid || !isContentsValidTooLong">Add Post!</button>
+          <button type="button" class="btn secondery" @click="$router.push('/main')">cancel</button>
+        </div>
       </div>
     </form>
     <p>{{ logMessage }}</p>
@@ -25,7 +28,7 @@
 </template>
 
 <script>
-import { addPost } from '@/api/index.js';
+import { addPost } from '@/api/posts.js';
 
 export default {
   data() {
@@ -43,7 +46,7 @@ export default {
       return this.contents.length;
     },
     isContentsValidTooLong() {
-      return this.contents.length <= 200;
+      return this.contents.length < 200;
     }
   },
   methods: {

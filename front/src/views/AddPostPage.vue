@@ -9,7 +9,7 @@
 
 <script>
 import PageTit from '@/components/common/PageTit.vue';
-import AddPostForm from '@/components/AddPostForm.vue';
+import AddPostForm from '@/components/posts/AddPostForm.vue';
 
 export default {
   components: {

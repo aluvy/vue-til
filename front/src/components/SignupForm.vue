@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { registerUser } from '@/api/index.js';
+import { registerUser } from '@/api/user.js';
 import { validateEmail, validatePassword, validateNickname } from '@/utils/validation.js';
 
 export default {

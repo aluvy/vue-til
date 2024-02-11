@@ -23,7 +23,7 @@
 import PageTit from '@/components/common/PageTit.vue'
 import PostItems from '@/components/posts/PostListItem.vue'
 import AppLoading from '@/components/common/AppLoading.vue';
-import { fetchPosts } from '@/api/index.js'
+import { fetchPosts } from '@/api/posts.js'
 
 export default {
   components: {
