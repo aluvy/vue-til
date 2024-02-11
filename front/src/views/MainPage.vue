@@ -39,19 +39,16 @@ export default {
   },
   methods: {
     async fetchPosts() {
-      console.log('fetchPosts');
       try {
         this.isLoading = true;
         const res = await fetchPosts();
         this.isLoading = false;
-        console.log(res);
         this.posts = res.data.posts;
       } catch (e) {
         console.log(e);
       }
     },
     refresh() {
-      console.log('refresh');
       this.fetchPosts();
     }
   },

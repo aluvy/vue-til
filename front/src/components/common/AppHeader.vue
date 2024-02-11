@@ -1,12 +1,12 @@
 <template>
   <header>
-    <h1><router-link to="/">Til</router-link></h1>
+    <h1><router-link :to="logoLink">TIL</router-link></h1>
 
     <nav>
       <template v-if="isLogin">
         <div class="username"><strong>{{ $store.getters.getUsername }}</strong> is logged</div>
         <ul>
-          <li><a href="javascript:;" @click="logoutUsesr">logout</a></li>
+          <li><a href="javascript:;" @click="logout">logout</a></li>
         </ul>
       </template>
       <template v-else>
@@ -21,15 +21,23 @@
 </template>
 
 <script>
+import { deleteCookie } from '@/utils/cookies.js'
+
 export default {
   computed: {
     isLogin() {
       return this.$store.getters.isLogin;
+    },
+    logoLink() {
+      return this.$store.getters.isLogin ? '/main' : '/login';
     }
   },
   methods: {
-    logoutUsesr() {
+    logout() {
       this.$store.commit('clearUserinfo');
+      this.$store.commit('clearToken');
+      deleteCookie('til_auth');
+      deleteCookie('til_user');
       this.$router.push('/');
     }
   }

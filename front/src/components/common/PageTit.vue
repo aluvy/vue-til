@@ -12,7 +12,6 @@ export default {
 		}
   },
   updated() {
-    console.log('updated');
     this.setPagetit();
   },
   created() {

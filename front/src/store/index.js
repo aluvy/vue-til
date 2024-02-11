@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { saveAuthToCookie, saveUserToCookie, getAuthFromCookie, getUserFromCookie, deleteCookie } from '@/utils/cookies.js';
+import { saveAuthToCookie, saveUserToCookie, getAuthFromCookie, getUserFromCookie } from '@/utils/cookies.js';
 import { loginUser } from '@/api/user.js';
 
 Vue.use(Vuex);
@@ -33,6 +33,8 @@ export default new Vuex.Store({
 		clearUserinfo(state) {
 			state.username = '';
 			state.nickname = '';
+		},
+		clearToken(state) {
 			state.token = '';
 		},
 	},
@@ -46,9 +48,6 @@ export default new Vuex.Store({
 			saveUserToCookie(res.data.user.username);
 
 			return res;
-		},
-		LOGOUT() {
-			deleteCookie();
 		},
 	},
 });

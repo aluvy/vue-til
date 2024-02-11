@@ -55,14 +55,12 @@ export default {
   },
   methods: {
     async submitForm() {
-      console.log('submit');
       const userData = {
         username: this.username,
         password: this.password,
         nickname: this.nickname,
       };
       const res = await registerUser(userData);
-      console.log(res.data.username);
 
       this.logMessage = `${res.data.username}님 가입되었습니다.`;
       this.initForm();

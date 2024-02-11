@@ -13,7 +13,6 @@ function addPost(postData) {
 
 // 특정 학습노트 조회 API
 function fetchPost(_id) {
-	console.log('fetchPost', _id);
 	return post.get(_id);
 }
 
