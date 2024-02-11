@@ -12,6 +12,7 @@
 
 <script>
 import { deletePost } from '@/api/posts.js'
+import { formatDate } from '@/utils/filters.js'
 
 export default {
   props: {
@@ -19,7 +20,8 @@ export default {
   },
   filters: {
     formatDate(value) {
-      return new Date(value).toLocaleString();
+      // return new Date(value).toLocaleString();
+      return formatDate(value);
     }
   },
   methods: {
