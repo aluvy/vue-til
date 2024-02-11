@@ -1,7 +1,7 @@
 <template>
 	<div id="App" class="wrap">
 		<AppHeader></AppHeader>
-		<div class="container">
+		<div class="container" :class="{ wide: path==='/main' }">
 			<transition name="pageChange" mode="out-in" appear>
 				<router-view></router-view>
 			</transition>
@@ -18,6 +18,11 @@ export default {
 	components: {
 		AppHeader,
 		AppFooter
+	},
+	computed: {
+		path() {
+			return this.$route.path;
+		}
 	},
 	methods: {
 		setVh() {
