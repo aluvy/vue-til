@@ -2,19 +2,26 @@
   <div>
     <form @submit.prevent="editPostSubmit" class="editPost_area">
       <div class="form-area">
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="title">title</label>
-            <input id="title" type="text" class="input" v-model="title">
-          </div>
+          <label class="label" for="title">title</label>
+          <FormInput
+            :option="{ type:'text', id:'title', placeholder: '' }"
+            :value="title"
+            @FormInputValue="title=$event.value">
+          </FormInput>
         </div>
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="contents">contents</label>
-            <textarea id="contents" class="textarea" v-model="contents"></textarea>
-          </div>
+          <label class="label" for="contents">contents</label>
+          <FormTextarea
+            :option="{ id:'contents', placeholder: '' }"
+            :value="contents"
+            @FormTextareaValue="contents=$event.value">
+          </FormTextarea>
           <div class="form-valid danger" v-if="!isContentsValidTooLong">Text is Too Long. Contents length must be less than 200</div>
         </div>
+        
       </div>
       <div class="btn-area">
         <div class="btn-group col">
@@ -28,9 +35,15 @@
 </template>
 
 <script>
+import FormInput from '@/components/common/FormInput.vue'
+import FormTextarea from '@/components/common/FormTextarea.vue'
 import { fetchPost, editPost } from '@/api/posts.js';
 
 export default {
+  components: {
+    FormInput,
+    FormTextarea
+  },
   data() {
     return {
       title: '',

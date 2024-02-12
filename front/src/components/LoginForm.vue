@@ -5,12 +5,20 @@
 
         <div class="form-group">
           <label class="label" for="username">username</label>
-          <FormInput :option="{ type:'text', id:'username', placeholder: 'example@example.com' }" :value="username" @val="username=$event.value"></FormInput>
+          <FormInput
+            :option="{ type:'text', id:'username', placeholder: 'example@example.com' }"
+            :value="username"
+            @FormInputValue="username=$event.value">
+          </FormInput>
         </div>
 
         <div class="form-group">
           <label class="label" for="password">password</label>
-          <FormInput :option="{ type:'password', id:'password', placeholder: '1234' }" :value="password" @val="password=$event.value"></FormInput>
+          <FormInput
+            :option="{ type:'password', id:'password', placeholder: '' }"
+            :value="password"
+            @FormInputValue="password=$event.value">
+          </FormInput>
         </div>
 
       </div>
@@ -46,9 +54,6 @@ export default {
     }
   },
   methods: {
-    getValue(val) {
-      console.log(val)
-    },
     async loginSubmit() {
       try {
         const userData = {

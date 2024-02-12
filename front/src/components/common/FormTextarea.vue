@@ -1,13 +1,13 @@
 <template>
   <div class="form-item">
     <div class="input-item">
-      <input class="input" ref="input"
-        :class="{ hasValid : value.length }"  
+      
+      <textarea class="textarea" ref="textarea"
+        :class="{ hasValid : value.length }"
         :id="option.id"
-        :type="option.type"
         :placeholder="option.placeholder"
-        v-model="FormInputValue"
-        @input="input">
+        v-model="FormTextareaValue"
+        @input="input"></textarea>
       <button type="button" class="btn-clear" v-if="value.length" @click="clear">
         <ion-icon name="close-circle-sharp"></ion-icon>
       </button>
@@ -23,19 +23,19 @@ export default {
   },
   data() {
     return {
-      FormInputValue: '',
+      FormTextareaValue: this.value,
     }
   },
   updated() {
-    this.FormInputValue = this.value;
+    this.FormTextareaValue = this.value;
   },
   methods: {
     input() {
-      this.$emit('FormInputValue', { value: this.FormInputValue });
+      this.$emit('FormTextareaValue', { value: this.FormTextareaValue });
     },
     clear() {
-      this.FormInputValue = '';
-      this.$refs.input.focus();
+      this.FormTextareaValue = '';
+      this.$refs.textarea.focus();
       this.input();
     }
   }

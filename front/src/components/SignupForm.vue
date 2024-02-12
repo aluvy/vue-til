@@ -2,24 +2,34 @@
   <div>
     <form @submit.prevent="submitForm" class="submit_area">
       <div class="form-area">
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="username">id</label>
-            <input id="username" type="text" class="input" v-model="username">
-          </div>
+          <label class="label" for="username">id</label>
+          <FormInput
+            :option="{ type:'text', id:'username', placeholder: 'example@example.com' }"
+            :value="username"
+            @FormInputValue="username=$event.value">
+          </FormInput>
         </div>
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="password">password</label>
-            <input id="password" type="text" class="input" v-model="password">
-          </div>
+          <label class="label" for="password">password</label>
+          <FormInput
+            :option="{ type:'password', id:'password', placeholder: '' }"
+            :value="password"
+            @FormInputValue="password=$event.value">
+          </FormInput>
         </div>
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="nickname">nickname</label>
-            <input id="nickname" type="text" class="input" v-model="nickname">
-          </div>
+          <label class="label" for="nickname">nickname</label>
+          <FormInput
+            :option="{ type:'text', id:'nickname', placeholder: '' }"
+            :value="nickname"
+            @FormInputValue="nickname=$event.value">
+          </FormInput>
         </div>
+        
       </div>
       <div class="btn-area">
         <button type="submit" class="btn" :disabled="!isUsernameValid || !isPasswordValid || !isNicknameValid">Sign up</button>
@@ -30,10 +40,14 @@
 </template>
 
 <script>
+import FormInput from '@/components/common/FormInput.vue'
 import { registerUser } from '@/api/user.js';
 import { validateEmail, validatePassword, validateNickname } from '@/utils/validation.js';
 
 export default {
+  components: {
+    FormInput,
+  },
   data() {
     return {
       username: '',
