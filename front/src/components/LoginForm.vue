@@ -2,19 +2,17 @@
   <div>
     <form @submit.prevent="loginSubmit" class="login_area">
       <div class="form-area">
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="username">id</label>
-            <input id="username" type="text" class="input" v-model="username">
-            <ion-icon name="close-circle-sharp"></ion-icon>
-          </div>
+          <label class="label" for="username">username</label>
+          <FormInput :option="{ type:'text', id:'username', placeholder: 'example@example.com' }" :value="username" @val="username=$event.value"></FormInput>
         </div>
+
         <div class="form-group">
-          <div class="form-item">
-            <label for="password">password</label>
-            <input id="password" type="text" class="input" v-model="password">  
-          </div>
+          <label class="label" for="password">password</label>
+          <FormInput :option="{ type:'password', id:'password', placeholder: '1234' }" :value="password" @val="password=$event.value"></FormInput>
         </div>
+
       </div>
       <div class="btn-area">
         <button type="submit" class="btn" :disabled="!isUsernameValid || !isPasswordValid">Login</button>
@@ -25,9 +23,13 @@
 </template>
 
 <script>
+import FormInput from '@/components/common/FormInput.vue'
 import { validateEmail, validatePassword } from '@/utils/validation.js'
 
 export default {
+  components: {
+    FormInput,
+  },
   data() {
     return {
       username: '',
@@ -44,6 +46,9 @@ export default {
     }
   },
   methods: {
+    getValue(val) {
+      console.log(val)
+    },
     async loginSubmit() {
       try {
         const userData = {
@@ -65,6 +70,7 @@ export default {
         // console.log(e);
         this.logMessage = e.response.data;
       } finally {
+        console.log('finally')
         this.initForm();
       }
 

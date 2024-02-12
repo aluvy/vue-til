@@ -6,9 +6,9 @@ import store from '@/store/index.js';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-	mode: 'history',
+	// mode: 'history',
 	// base: '/#',
-	// scrollBehavior: () => ({ y: 0 }),
+	scrollBehavior: () => ({ y: 0 }),
 	routes: [
 		{
 			path: '/',

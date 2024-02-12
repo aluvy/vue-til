@@ -97,7 +97,7 @@ label{ cursor: pointer; }
 input, select, textarea, button { border: 0; border-radius: 0; -webkit-appearance: none; appearance: none; }
 
 input::placeholder,
-textarea::placeholder { opacity: 1; color: #999; }
+textarea::placeholder { opacity: 1; color: #bbb; }
 
 input[type="password"]:not(:placeholder-shown){ font-family: 'pass'; }
 
