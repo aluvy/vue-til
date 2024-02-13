@@ -10,6 +10,7 @@
             :value="username"
             @FormInputValue="username=$event.value">
           </FormInput>
+          <div class="form-valid danger" v-if="!isUsernameValid && username !== ''">Please enter an email address</div>
         </div>
 
         <div class="form-group">
