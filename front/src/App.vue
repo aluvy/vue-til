@@ -7,17 +7,20 @@
 			</transition>
 		</div>
 		<AppFooter></AppFooter>
+		<AppLoading></AppLoading>
 	</div>
 </template>
 
 <script>
 import AppHeader from '@/components/common/AppHeader.vue';
 import AppFooter from '@/components/common/AppFooter.vue';
+import AppLoading from '@/components/common/AppLoading.vue';
 
 export default {
 	components: {
 		AppHeader,
-		AppFooter
+		AppFooter,
+		AppLoading
 	},
 	computed: {
 		path() {
@@ -28,11 +31,19 @@ export default {
 		setVh() {
 			document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
 		},
+    startLoading() {
+      this.loadingStatus = true;
+    },
+    endLoading() {
+
+    }
 	},
 	created() {
 		window.addEventListener('resize', this.setVh);
 		this.setVh();
 	},
+  beforeDestroy() {
+  },
 	unmounted() {
 		window.removeEventListener('resize', this.setVh);
 	},
