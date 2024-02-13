@@ -7,12 +7,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
+		loading: false,
 		pageTit: '',
 		username: getUserFromCookie() || '',
 		nickname: '',
 		token: getAuthFromCookie() || '',
 	},
 	getters: {
+		isLoading: state => state.loading,
 		getPagetit: state => state.pageTit,
 		getUsername: state => state.username,
 		getNickname: state => state.nickname,
@@ -20,6 +22,10 @@ export default new Vuex.Store({
 		isLogin: state => state.username !== '',
 	},
 	mutations: {
+		setLoading(state, payload) {
+			// console.log('setLoading', payload);
+			state.loading = payload.loading;
+		},
 		setPagetit(state, payload) {
 			state.pageTit = payload.pageTit;
 		},
