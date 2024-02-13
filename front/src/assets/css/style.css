@@ -87,3 +87,8 @@ footer { text-align: center; font-size: 1.2rem; color: #888; padding: 2rem 2rem 
 .post-func { position: absolute; right: 2rem; bottom: 1.5rem; display: flex; align-items: center; }
 .post-func button { height: 3rem; line-height: 3rem; padding:0 0.5rem; font-size: 1.2rem; color: #999; transition: all .3s; }
 .post-func button:hover { color: var(--color-point); }
+
+
+/* logMessage */
+.logMessage { padding: 4rem 0; }
+.logMessage p { text-align: center; color: #888; }
