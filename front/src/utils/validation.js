@@ -12,3 +12,4 @@ function validateNickname(nickname) {
 }
 
 export { validateEmail, validatePassword, validateNickname };
+
