@@ -2,14 +2,13 @@
   <div>
     <PageTit></PageTit>
     <div class="content">
-      <template v-if="isLoading">
-        <AppLoading></AppLoading>
-      </template>
-      <template v-else>
-        <transition-group tag="ul" name="post">
-          <PostItems v-for="post in posts" :key="post._id" :post="post" @refresh="refresh"></PostItems>
-        </transition-group>
-      </template>
+      <transition-group tag="ul" name="post">
+        <PostItems v-for="post in posts" :key="post._id" :post="post" @refresh="refresh"></PostItems>
+      </transition-group>
+
+      <div class="logMessage" v-if="logMessage.length">
+        <p>{{ logMessage }} ⛔</p>
+      </div>
 
       <router-link to="/add" class="btn-create" title="add">
         <ion-icon name="add-outline"></ion-icon>
@@ -22,30 +21,30 @@
 <script>
 import PageTit from '@/components/common/PageTit.vue'
 import PostItems from '@/components/posts/PostListItem.vue'
-import AppLoading from '@/components/common/AppLoading.vue';
 import { fetchPosts } from '@/api/posts.js'
 
 export default {
   components: {
     PageTit,
     PostItems,
-    AppLoading
   },
   data() {
     return {
       posts: [],
-      isLoading: false,
+      logMessage: '',
     }
   },
   methods: {
     async fetchPosts() {
       try {
-        this.isLoading = true;
+        this.$store.commit('setLoading', { loading: true });
         const res = await fetchPosts();
-        this.isLoading = false;
         this.posts = res.data.posts;
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        this.logMessage = e.message;
+      } finally {
+        this.$store.commit('setLoading', { loading: false });
       }
     },
     refresh() {
