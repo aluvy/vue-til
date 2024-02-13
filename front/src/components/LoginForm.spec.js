@@ -61,7 +61,7 @@ describe('LoginForm.vue', () => {
 			},
 		});
 		const button = wrapper.find('.btn');
-		console.log(button.attributes());
+		console.log(button.attributes()); // { type: 'submit', disabled: 'disabled', class: 'btn' }
 		expect(button.element.disabled).toBeTruthy();
 	});
 });
