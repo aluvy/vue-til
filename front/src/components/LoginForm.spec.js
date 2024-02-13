@@ -49,4 +49,19 @@ describe('LoginForm.vue', () => {
 		// console.log(warningText.html());
 		expect(warningText.exists()).toBeTruthy(); // exists() 존재하는지 확인, 그 값이 true 인지
 	});
+
+	//
+	test('ID와 PW가 입력되지 않으면 로그인 버튼이 비활성화 된다', () => {
+		const wrapper = shallowMount(LoginForm, {
+			data() {
+				return {
+					username: 'test@test.com',
+					password: '',
+				};
+			},
+		});
+		const button = wrapper.find('.btn');
+		console.log(button.attributes());
+		expect(button.element.disabled).toBeTruthy();
+	});
 });
