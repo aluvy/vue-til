@@ -1,18 +1,16 @@
 <template>
-  <div class="spinner-container">
-    <div class="spinner"></div>
+  <div class="loading-container" v-if="$store.getters.isLoading">
+    <div class="loading"></div>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style scoped>
-.spinner-container { display: flex; align-items: center; justify-content: center; height: 24rem; }
-.spinner { width: 5rem; height: 5rem; border-radius: 50%; border: 5px solid #e0e0e0; border-bottom: 5px solid var(--color-point); animation: spin 1s linear infinite; }
+.loading-container { position: fixed; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0, 0.4); }
+.loading { width: 5rem; height: 5rem; border-radius: 50%; border: 5px solid #fff; border-bottom: 5px solid var(--color-point); animation: spin 1s linear infinite; }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
